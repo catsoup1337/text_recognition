@@ -1,0 +1,13 @@
+{% block content %} 
+<div style="text-align:center; top: 100 px;">
+    <p><a href="{% url 'index' %}">Home</a></p>
+{% if tag %}
+    <h2>Posts tagged with "{{ tag.name }}"</h2>
+{% endif %}
+{% for img in imgs %}
+    {% include "includes/img_item.html" with img=img %}
+{% endfor %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,8 @@
+<div>
+    <p><img src="{{img.image.url}}"></a></p>
+    Tags:
+    {% for tag in img.tags.all %}
+            {{ tag.name }}
+        {% if not forloop.last %}, {% endif %}
+    {% endfor %}
+</div>

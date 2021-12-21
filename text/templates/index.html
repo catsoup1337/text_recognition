@@ -1,0 +1,27 @@
+{% block content %} 
+<div style="text-align:center; top: 100 px;">
+  
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form_search }}
+    <label for="search">Search: </label>
+    <input id="search" type="text" name="search" maxlength="5" required>
+    <button type="submit">Search</button>
+  </form>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Upload</button>
+  </form>
+
+  {% if img_obj %}
+    <h3>Succesfully uploaded</h3>
+    <img src="{{ img_obj.image.url}}" alt="connect" style="max-height:300px">
+    <h2>The rusult of scanned image: {{ result }}</h2>
+  {% endif %}
+  {% for img in imgs %}
+    {% include "includes/img_item.html" with img=img %}
+  {% endfor %}
+</div>
+
+{% endblock %}
